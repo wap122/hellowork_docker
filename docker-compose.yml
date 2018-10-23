@@ -2,28 +2,32 @@ version: '2'
 
 services:
     db:
-      image: mysql
-      environment:
+        image: mysql
+        environment:
                 - MYSQL_DATABASE=hellowork_database
                 - MYSQL_USER=hellowork_admin
                 - MYSQL_PASSWORD=minhdeptrai105
                 - MYSQL_ROOT_PASSWORD=minhtoanquyen
-      volumes:
+        volumes:
             - ./db:/var/lib/mysql
-      ports:
+        ports:
             - "3306:3306"
     phpmyadmin:
-     image: phpmyadmin/phpmyadmin
-     environment:
+        image: phpmyadmin/phpmyadmin
+        environment:
             PMA_ARBITRARY: 1
             MYSQL_USER: hellowork_admin
             MYSQL_PASSWORD: minhdeptrai105
             MYSQL_ROOT_PASSWORD: minhtoanquyen
-     ports:
+        ports:
             - "80:80"
-     links:
+        links:
             # for mysql container
             - "db:db"
+    memcache: 
+        image: memcached
+        ports: 
+            - "11211:11211"
 volumes:
     db:
         driver: "local"
