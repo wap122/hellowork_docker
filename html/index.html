@@ -5,8 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://localhost/static/gateone.js"></script>
 </head>
 <body>
-    hi i'm go su
+    <div id="gateone_container" style="position: relative; width: 60em; height: 30em;">
+        <div id="gateone"></div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            // Initialize Gate One:
+            GateOne.init({url: 'https://localhost'});
+
+            setTimeout(() => {
+                    GateOne.SSH.execRemoteCmd(3,'ls', function(res) {
+                    console.log(res)
+                }, function(err) {
+                    console.log(err)
+            });
+                }, 2000);
+           
+        }
+        </script>
 </body>
 </html>
