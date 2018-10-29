@@ -18,7 +18,7 @@
             GateOne.init({url: 'https://localhost'});
 
             setTimeout(() => {
-                    GateOne.SSH.execRemoteCmd(3,'ls', function(res) {
+                    GateOne.SSH.execRemoteCmd(2,'ls', function(res) {
                     console.log(res)
                 }, function(err) {
                     console.log(err)
